@@ -1,5 +1,5 @@
 provider "aws" {
-    region = "us-east-1"
+    region = "us-east1"
 }
 
 resource "aws_s3_bucket" "athena_bucket" {
@@ -36,7 +36,7 @@ resource "aws_athena_named_query" "athena_query" {
     WITH SERDEPROPERTIES (
       'serialization.format' = '1'
     )
-    LOCATION 's3://${aws_s3_bucket.destination_bucket.bucket}/output/'
+    LOCATION 's3://${aws_s3_bucket.destination_bucket.bucket}/data/'
     TBLPROPERTIES ('has_encrypted_data'='false');
     EOT
     workgroup = aws_athena_workgroup.athena_workgroup.name
