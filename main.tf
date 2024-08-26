@@ -1,5 +1,5 @@
 provider "aws" {
-    region = "us-east1"
+    region = "us-east-1"
 }
 
 resource "aws_s3_bucket" "athena_bucket" {
