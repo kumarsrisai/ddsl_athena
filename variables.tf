@@ -1,6 +1,6 @@
 variable "region" {
     type = string
-    default = "ap-southeast-2"
+    default = "us-east-1"
 }
 
 variable "bucket_name" {
