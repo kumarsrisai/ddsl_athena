@@ -19,7 +19,7 @@ resource "aws_athena_workgroup" "athena_workgroup" {
   name = "athena_dummy_workgroup"
   configuration {
     result_configuration {
-      output_location = "s3://${aws_s3_bucket.athena_bucket.bucket}"
+      output_location = "s3://${aws_s3_bucket.athena_bucket.bucket}/"
     }
   }
 }
