@@ -24,6 +24,7 @@ resource "aws_athena_workgroup" "athena_workgroup" {
   }
 }
 
+
 resource "aws_athena_named_query" "athena_query" {
     name = "create data table"
     database = aws_athena_database.athena_db.name
