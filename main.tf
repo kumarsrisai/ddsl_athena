@@ -10,11 +10,6 @@ resource "aws_s3_bucket" "destination_bucket" {
     bucket = "athena-destinationbucket"
 }
 
-
-resource "aws_athena_database" "athena_db"{
-    name = "athena_dummy_dbb"
-}
-
 resource "aws_athena_workgroup" "athena_workgroup" {
   name = "athena_dummy_workgroup"
   configuration {
@@ -24,10 +19,14 @@ resource "aws_athena_workgroup" "athena_workgroup" {
   }
 }
 
+resource "aws_athena_database" "athena_db" {
+    name = "athena_dummy_dbb"
+}
+
 resource "aws_athena_named_query" "athena_query" {
-    name = "create data table"
+    name     = "create data table"
     database = aws_athena_database.athena_db.name
-    query = <<EOT
+    query    = <<EOT
     CREATE EXTERNAL TABLE IF NOT EXISTS example_table (
       id int,
       name string
@@ -41,4 +40,3 @@ resource "aws_athena_named_query" "athena_query" {
     EOT
     workgroup = aws_athena_workgroup.athena_workgroup.name
 }
-  
